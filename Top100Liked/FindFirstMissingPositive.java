@@ -14,6 +14,7 @@ public class FindFirstMissingPositive {
 
         // -2, 3, 4
         // 4 ,1, 3, 2
+        // if number is -ve or 0 we will replace it with len+1, because it will not give us answer
         for (int i = 0; i < len; i++) {
             if (nums[i] <= 0) {
                 nums[i] = len + 1;
@@ -22,6 +23,7 @@ public class FindFirstMissingPositive {
 
         // 4, 3, 4
         // 4, 1, 3, 2
+        // now we will get the value and use it as index to confirm that this number is in array
         for (int i = 0; i < len; i++) {
             int ind = Math.abs(nums[i]) - 1;
 
@@ -32,12 +34,14 @@ public class FindFirstMissingPositive {
 
         // 4, 3, -4
         // -4, -1, -3, -2
+        // now if we will check if there is some number which is +ve that means the index + 1 is not in the array
         for (int i = 0; i < len; i++) {
             if(nums[i] > 0) {
                 return i + 1;
             }
         }
 
+        // we will return len + 1 when all nums are -ve meaning there is no missing positive num
         return len + 1;
     }
 
